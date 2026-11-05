@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Mars International School</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fc;color:#17294b}
+header{background:#123b82;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+header h2{margin:0;font-size:20px}
+header small{color:#dce8ff}
+nav{background:#fff;padding:14px 6%;display:flex;gap:22px;flex-wrap:wrap;box-shadow:0 2px 8px #0001}
+nav a{text-decoration:none;color:#173d7c;font-weight:bold}
+.hero{padding:65px 7%;background:linear-gradient(120deg,#123b82,#3479dc);color:white}
+.hero h1{font-size:38px;max-width:650px;margin:0 0 12px}
+.hero p{font-size:17px;line-height:1.6}
+.btn{display:inline-block;padding:12px 20px;background:#fff;color:#123b82;border:0;border-radius:7px;font-weight:bold;cursor:pointer;margin:8px 6px 0 0}
+section{padding:35px 6%}
+h2.title{color:#123b82}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 3px 15px #102d5c12}
+.card h3{color:#17458e;margin-top:0}
+.login{max-width:480px;margin:auto}
+input,select,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ccd5e5;border-radius:7px}
+.action{background:#17458e;color:white;padding:12px 18px;border:0;border-radius:7px;cursor:pointer}
+footer{background:#102c60;color:white;padding:28px 6%;text-align:center}
+#demoResult{margin-top:12px;color:#147747;font-weight:bold}
+.class-card{text-align:center;border:1px solid #cce5d5}
+.class-card.unavailable{background:#fff0f0;border-color:#efbbbb;color:#a33}
+.class-card.unavailable h3{text-decoration:line-through;color:#a33}
+.status{font-size:12px;font-weight:bold}
+.admin-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border-bottom:1px solid #ddd}
+.admin-row button{padding:9px 12px;border:0;border-radius:7px;background:#174b9b;color:white;cursor:pointer}
+.admin-row button.off{background:#b52c36}
+@media(max-width:600px){.hero h1{font-size:28px}nav{gap:12px}}
+</style>
+</head>
+<body>
+
+<header>
+ <div>
+  <h2>THE MARS INTERNATIONAL SCHOOL</h2>
+  <small>Sarawani, Hapur, Uttar Pradesh</small>
+ </div>
+ <button class="btn" onclick="document.getElementById('login').scrollIntoView()">Parent Login</button>
+</header>
+
+<nav>
+ <a href="#home">Home</a>
+ <a href="#about">About School</a>
+ <a href="#classes">Classes</a>
+ <a href="#facilities">Facilities</a>
+ <a href="#notices">Notices</a>
+ <a href="#office">Reception</a>
+ <a href="#admin">Admin</a>
+ <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero" id="home">
+ <h1>Welcome to The Mars International School</h1>
+ <p>Learning Today, Leading Tomorrow.<br>
+ A place for learning, creativity and a brighter future.</p>
+ <button class="btn" onclick="document.getElementById('classes').scrollIntoView()">Explore Classes</button>
+ <button class="btn" onclick="document.getElementById('login').scrollIntoView()">Parent Portal</button>
+</div>
+
+<section id="about">
+ <h2 class="title">About Our School</h2>
+ <div class="card">
+  <p>Welcome to The Mars International School, Sarawani (Hapur).
+  Our aim is to provide quality education, discipline and all-round
+  development for every student.</p>
+ </div>
+</section>
+
+<section id="classes">
+ <h2 class="title">Our Classes</h2>
+ <p>Classes available for admission are shown below.</p>
+ <div class="cards" id="classCards"></div>
+</section>
+
+<section id="facilities">
+ <h2 class="title">School Facilities</h2>
+ <div class="cards">
+  <div class="card"><h3>📚 Education</h3><p>Learning and academic development.</p></div>
+  <div class="card"><h3>📝 Examination</h3><p>Assessment and student progress.</p></div>
+  <div class="card"><h3>🏆 Activities</h3><p>Sports, drawing, quiz and events.</p></div>
+  <div class="card"><h3>👨‍👩‍👧 Parent Connect</h3><p>School updates and parent communication.</p></div>
+ </div>
+</section>
+
+<section id="notices">
+ <h2 class="title">School Notices</h2>
+ <div class="card">
+  <h3>Latest School Updates</h3>
+  <p>School notices and circulars will appear here after Admin publishes them.</p>
+ </div>
+</section>
+
+<section id="login">
+ <h2 class="title" style="text-align:center">Parent Login</h2>
+ <div class="card login">
+  <p>Enter your mobile number registered with the school.</p>
+  <input id="mobile" type="tel" maxlength="10" placeholder="Registered mobile number">
+  <button class="action" onclick="requestDemoOTP()">Continue</button>
+  <p id="demoResult"></p>
+  <small>Demo only: Real OTP and school permission verification require secure backend integration.</small>
+ </div>
+</section>
+
+<section id="office">
+ <h2 class="title">School Office – Communication Demo</h2>
+ <div class="card">
+  <p>Reception staff can prepare messages for all parents or selected classes.</p>
+  <select id="target">
+   <option>All Parents</option>
+   <option>Nursery</option><option>LKG</option><option>UKG</option>
+   <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+   <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+   <option>Class 7</option><option>Class 8</option><option>Class 9</option>
+   <option>Class 10</option><option>Class 11</option><option>Class 12</option>
+  </select>
+  <textarea id="msg" placeholder="Write a message for parents"></textarea>
+  <button class="action" onclick="prepareMessage()">Preview Message</button>
+  <p id="messageResult"></p>
+  <small>Actual WhatsApp and SMS sending requires approved service integration.</small>
+ </div>
+</section>
+
+<!-- NEW ADMIN CLASS AVAILABILITY CONTROL -->
+<section id="admin">
+ <h2 class="title">Admin – Class Availability Control</h2>
+ <div class="card">
+  <h3>Manage Available / Unavailable Classes</h3>
+  <p>Admin can enable or disable any class. Disabled classes will show a cross mark on the website.</p>
+  <div id="adminClasses"></div>
+ </div>
+</section>
+
+<section id="contact">
+ <h2 class="title">Contact Us</h2>
+ <div class="card">
+  <p><b>The Mars International School</b></p>
+  <p>Sarawani, Hapur, Uttar Pradesh</p>
+  <p>School phone and email can be added by Admin.</p>
+ </div>
+</section>
+
+<footer>
+ <h3>THE MARS INTERNATIONAL SCHOOL</h3>
+ <p>Sarawani, Hapur, Uttar Pradesh</p>
+ <small>School Website Prototype</small>
+</footer>
+
+<script>
+const classes=[
+"Nursery","LKG","UKG",
+"Class 1","Class 2","Class 3","Class 4","Class 5",
+"Class 6","Class 7","Class 8","Class 9","Class 10",
+"Class 11","Class 12"
+];
+
+// Load class status saved in this browser
+let availability=JSON.parse(localStorage.getItem("marsClasses")) || {};
+
+classes.forEach(name=>{
+ if(availability[name]===undefined){
+  availability[name]=true;
+ }
+});
+
+function saveAvailability(){
+ localStorage.setItem("marsClasses",JSON.stringify(availability));
+}
+
+function showClasses(){
+
+ const publicArea=document.getElementById("classCards");
+ const adminArea=document.getElementById("adminClasses");
+
+ publicArea.innerHTML="";
+ adminArea.innerHTML="";
+
+ classes.forEach(name=>{
+
+  const available=availability[name];
+
+  // Public Website Class Card
+  const card=document.createElement("div");
+  card.className="card class-card "+(available?"":"unavailable");
+
+  const title=document.createElement("h3");
+  title.textContent=(available?"✓ ":"✕ ")+name;
+
+  const status=document.createElement("span");
+  status.className="status";
+  status.textContent=available?"Available":"Unavailable";
+
+  card.appendChild(title);
+  card.appendChild(status);
+  publicArea.appendChild(card);
+
+  // Admin Control
+  const row=document.createElement("div");
+  row.className="admin-row";
+
+  const label=document.createElement("strong");
+  label.textContent=name+" – "+(available?"Available":"Unavailable");
+
+  const button=document.createElement("button");
+  button.textContent=available?"Disable Class":"Enable Class";
+  button.className=available?"off":"";
+
+  button.onclick=function(){
+   availability[name]=!availability[name];
+   saveAvailability();
+   showClasses();
+  };
+
+  row.appendChild(label);
+  row.appendChild(button);
+  adminArea.appendChild(row);
+ });
+}
+
+function requestDemoOTP(){
+ const mobile=document.getElementById("mobile").value;
+ const result=document.getElementById("demoResult");
+
+ if(!/^[0-9]{10}$/.test(mobile)){
+  result.textContent="Please enter a valid 10-digit mobile number.";
+  return;
+ }
+
+ result.textContent="Demo only: No OTP sent. School database and OTP service are not connected.";
+}
+
+function prepareMessage(){
+ const target=document.getElementById("target").value;
+ const message=document.getElementById("msg").value.trim();
+ document.getElementById("messageResult").textContent=
+ message
+ ? "Preview for "+target+": "+message+" (Not sent – demo only)"
+ : "Please write a message first.";
+}
+
+showClasses();
+</script>
+
+</body>
+</html>
